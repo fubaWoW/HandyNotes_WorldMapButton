@@ -80,7 +80,7 @@ if IsAddOnLoaded('HandyNotes') then
       if (MapsterOptionsButton) and (not MapsterOptionsButton.MovedByHandyNotesWorldMapButton) then
         point, relativeTo, relativePoint, xOfs, yOfs = MapsterOptionsButton:GetPoint()
         MapsterOptionsButton:ClearAllPoints();
-        MapsterOptionsButton:SetPoint(point, relativeTo, relativePoint, xOfs - btn:GetWidth(), yOfs);
+        MapsterOptionsButton:SetPoint(point, relativeTo, relativePoint, xOfs - btn:GetWidth()- 5, yOfs);
         Frame:UnregisterEvent("ADDON_LOADED");
         MapsterOptionsButton.MovedByHandyNotesWorldMapButton = true;
       end
