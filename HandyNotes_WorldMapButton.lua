@@ -65,7 +65,7 @@ if IsAddOnLoaded('HandyNotes') then
   btn:SetScript("OnEnter", btnOnEnter);
   btn:SetScript("OnLeave", btnOnLeave);
 
-  local function DoOnEvent(self, event, ...)
+  local function OnEvent(self, event, ...)
     if (event == "PLAYER_ENTERING_WORLD") then
       if IsAddOnLoaded('HandyNotes') then
         if btn then
@@ -82,7 +82,7 @@ if IsAddOnLoaded('HandyNotes') then
       if (MapsterOptionsButton) and (not MapsterOptionsButton.MovedByHandyNotesWorldMapButton) then
         point, relativeTo, relativePoint, xOfs, yOfs = MapsterOptionsButton:GetPoint()
         MapsterOptionsButton:ClearAllPoints();
-        MapsterOptionsButton:SetPoint(point, relativeTo, relativePoint, xOfs - btn:GetWidth()- 5, yOfs);
+        MapsterOptionsButton:SetPoint(point, relativeTo, relativePoint, xOfs - btn:GetWidth() - 5, yOfs);
         Frame:UnregisterEvent("ADDON_LOADED");
         MapsterOptionsButton.MovedByHandyNotesWorldMapButton = true;
       end
@@ -91,5 +91,5 @@ if IsAddOnLoaded('HandyNotes') then
 
   Frame:RegisterEvent("PLAYER_ENTERING_WORLD")
   Frame:RegisterEvent("ADDON_LOADED")
-  Frame:SetScript("OnEvent", DoOnEvent)
+  Frame:SetScript("OnEvent", OnEvent)
 end
