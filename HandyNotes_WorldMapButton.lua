@@ -1,3 +1,5 @@
+-- Handynotes Worldmap Button by fuba
+
 if IsAddOnLoaded('HandyNotes') then
   local L = LibStub("AceLocale-3.0"):GetLocale("HandyNotes_WorldMapButton", false);
   local FOLDER_NAME = ...

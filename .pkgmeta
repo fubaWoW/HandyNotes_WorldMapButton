@@ -1,0 +1,17 @@
+package-as: HandyNotes: WorldMapButton
+
+externals:
+  libs/LibStub:
+    url: https://repos.wowace.com/wow/libstub/trunk
+    tag: latest
+  libs/Ace3:
+	url: https://repos.wowace.com/wow/ace3/trunk
+	tag: latest
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+ignore:
+  - README.md
+  - utils
