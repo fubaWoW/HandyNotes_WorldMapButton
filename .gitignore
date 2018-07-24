@@ -39,4 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+# Other
+Thumbs.db
+Desktop.ini
 
+# Libraries
+/libs
