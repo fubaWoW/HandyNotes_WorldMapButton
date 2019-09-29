@@ -19,6 +19,7 @@ if IsAddOnLoaded('HandyNotes') then
   end
 
   function SetIconTooltip(IsRev)
+		if not WorldMapTooltip then return end
     WorldMapTooltip:Hide();
     WorldMapTooltip:SetOwner(btn, "ANCHOR_BOTTOMLEFT");
     if HandyNotes:IsEnabled() then
@@ -44,7 +45,9 @@ if IsAddOnLoaded('HandyNotes') then
 
   local function btnOnLeave(self, motion)
     SetIconTexture();
-    WorldMapTooltip:Hide();
+		if WorldMapTooltip then
+			WorldMapTooltip:Hide();
+		end
   end
 
   local function btnOnClick(self)
