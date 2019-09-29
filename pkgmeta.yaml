@@ -1,9 +1,12 @@
-package-as: HandyNotes_WorldMapButton
-
 ignore:
-   - README.md
+  - README.md
+  - CHANGES.txt
+  - LICENSE.md
+  - preview.png
 
-enable-nolib-creation: no
+license-output: LICENSE.txt
+
+enable-nolib-creation: yes
 
 externals:
   libs/LibStub:
