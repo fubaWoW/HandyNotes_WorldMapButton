@@ -8,7 +8,7 @@ if IsAddOnLoaded('HandyNotes') then
   local iconDefault = [[Interface\AddOns\]] .. FOLDER_NAME .. [[\Buttons\Default]];
   local iconDisabled = [[Interface\AddOns\]] .. FOLDER_NAME .. [[\Buttons\Disabled]];
 
-  local btn = CreateFrame("Button", "HandyNotesWorldMapButton", WorldMapFrame.BorderFrame, "UIPanelButtonTemplate");
+  local btn = CreateFrame("Button", "HandyNotesWorldMapButton", WorldMapFrame, "UIPanelButtonTemplate");
 
   function SetIconTexture()
     if HandyNotes:IsEnabled() then
