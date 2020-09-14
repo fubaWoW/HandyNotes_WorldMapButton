@@ -23,7 +23,7 @@ end
 local function SetIconTooltip(IsRev)
 	if not WorldMapTooltip then return end
 	WorldMapTooltip:Hide();
-	WorldMapTooltip:SetOwner(btn, "ANCHOR_BOTTOMLEFT");
+	WorldMapTooltip:SetOwner(btn, "ANCHOR_BOTTOMRIGHT");
 	if HandyNotes:IsEnabled() then
 		WorldMapTooltip:AddLine(L["TEXT_TOOLTIP_HIDE_ICONS"], nil, nil, nil, nil, 1 );
 	else
@@ -33,13 +33,7 @@ local function SetIconTooltip(IsRev)
 end
 
 btn:ClearAllPoints();
-if isClassicWow then
-	--btn:SetPoint("TOPRIGHT", WorldMapFrame.BorderFrame, "TOPRIGHT", -28, -4);
-	btn:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -3, -3)
-else
-	--btn:SetPoint("TOPRIGHT", WorldMapFrame.BorderFrame, "TOPRIGHT", -48, -3);
-	btn:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -3, -3)
-end
+btn:SetPoint("TOPLEFT", WorldMapFrame.ScrollContainer, "TOPLEFT", 6, -3)
 btn:RegisterForClicks("AnyUp");
 btn:SetSize(24, 24);
 btn:SetText("");
@@ -90,6 +84,7 @@ local function OnEvent(self, event, addon, ...)
 
 	-- Move the MapsterOptionsButton by the Width of HandyNotesWorldMapButton to prevent overlap
 	if event == "ADDON_LOADED" then
+		--[[
 		if addon == "Mapster" then
 			if (MapsterOptionsButton) and (not MapsterOptionsButton.MovedByHandyNotesWorldMapButton) then
 				point, relativeTo, relativePoint, xOfs, yOfs = MapsterOptionsButton:GetPoint()
@@ -103,13 +98,14 @@ local function OnEvent(self, event, addon, ...)
 				if btn then
 					if isClassicWow then
 						btn:ClearAllPoints();
-						btn:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 0, 0);
+						-btn:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 0, 0);
 						btn:SetFrameLevel(5000);
 					else
 					end
 				end
 			end
 		end
+		]]
 	end
 end
 
