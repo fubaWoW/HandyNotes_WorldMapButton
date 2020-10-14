@@ -76,72 +76,51 @@ hooksecurefunc(HandyNotes, "OnDisable", function(self)
 	SetIconTexture()
 end)
 
-
-if isClassicWow then
-	btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
-else
-	btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame.ScrollContainer, "UIPanelButtonTemplate");
-end
+btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
 btn:RegisterForClicks("AnyUp");
 btn:SetText("");
 btn:SetScript("OnClick", btnOnClick);
 btn:SetScript("OnEnter", btnOnEnter);
 btn:SetScript("OnLeave", btnOnLeave);
 
-WorldMapFrame:HookScript("OnShow", function(self)		
+WorldMapFrame:HookScript("OnShow", function(self)
+	local alignmentFrame = _G.WorldMapFrame
+	local parent = _G.WorldMapFrame
+	
 	if isClassicWow then
-		btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
-		btn:ClearAllPoints();
-		btn:SetPoint("TOPRIGHT", WorldMapFrame, "TOPRIGHT", -16, -76)
-		btn:SetSize(24, 24);
-		btn:SetFrameLevel(5000);
+		alignmentFrame = _G.WorldMapFrameCloseButton;
+		 parent = alignmentFrame:GetParent();
 	else
-		local FilterButton = WorldMapFrame.overlayFrames[2]
-		btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame.ScrollContainer, "UIPanelButtonTemplate");
-		btn:ClearAllPoints();
-		if FilterButton and FilterButton:IsVisible() then
-			parent = FilterButton:GetParent()	
-			btn:SetPoint("RIGHT", FilterButton, "LEFT", -5, 0)
-			btn:SetSize(24, 24);
-			btn:SetFrameLevel(5000);
-		else
-			btn:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -10, -7)
-			btn:SetSize(24, 24);
-			btn:SetFrameLevel(5000);
-		end
+		alignmentFrame = _G.WorldMapFrame.BorderFrame.MaximizeMinimizeFrame;
+		parent = alignmentFrame:GetParent();
 	end
+	if (not alignmentFrame) or (not parent) then return end
+	
+	btn = _G[ButtonName] or CreateFrame("Button", ButtonName, parent, "UIPanelButtonTemplate");
+	btn:ClearAllPoints();
+	btn:SetPoint("RIGHT", alignmentFrame, "LEFT", 0, 0);
+	btn:SetFrameStrata(alignmentFrame:GetFrameStrata());
+	btn:SetFrameLevel(5000);
+	btn:SetSize(16, 16);
 	
 	if IsAddOnLoaded('Leatrix_Maps') then
 		if isClassicWow then
-			if LeaMapsDB and (LeaMapsDB["NoMapBorder"] == "On" and LeaMapsDB["UseDefaultMap"] == "Off") then
-				if IsAddOnLoaded('WorldMapTrackingEnhanced') then
-					local wmteb = _G["WorldMapTrackingEnhancedButton"];
-					if wmteb then
-						if WorldMapFrameCloseButton and WorldMapFrameCloseButton:IsVisible() then
-							wmteb:ClearAllPoints()
-							wmteb:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", -5, 0)
-							btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
-							btn:ClearAllPoints();
-							btn:SetPoint("RIGHT", WorldMapTrackingEnhancedButton, "LEFT", -5, 0);
-							btn:SetFrameLevel(5000);
-							btn:SetSize(24, 24);
-						end
-					end
-				else
-					btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
-					btn:ClearAllPoints();
-					btn:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 0, 0);
-					btn:SetFrameLevel(5000);
-					btn:SetSize(18, 18);
-				end
-			else
-				if IsAddOnLoaded('WorldMapTrackingEnhanced') then
-					btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
-					btn:ClearAllPoints();
-					btn:SetPoint("RIGHT", WorldMapTrackingEnhancedButton, "LEFT", -5, 0);
-					btn:SetFrameLevel(5000);
-					btn:SetSize(24, 24);					
-				end
+			if LeaMapsDB and (LeaMapsDB["NoMapBorder"] == "On") then
+				btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
+				btn:ClearAllPoints();
+				btn:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 0, 0);
+				btn:SetFrameStrata(WorldMapFrameCloseButton:GetFrameStrata());
+				btn:SetFrameLevel(5000);
+				btn:SetSize(18, 18);
+			end
+		else
+			if LeaMapsDB and (LeaMapsDB["NoMapBorder"] == "On") then
+				btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
+				btn:ClearAllPoints();
+				btn:SetPoint("TOPLEFT", WorldMapFrame.ScrollContainer, "TOPLEFT", 5, -5);
+				btn:SetFrameStrata(WorldMapFrame.ScrollContainer:GetFrameStrata());
+				btn:SetFrameLevel(5000);
+				btn:SetSize(24, 24);
 			end
 		end
 	end
