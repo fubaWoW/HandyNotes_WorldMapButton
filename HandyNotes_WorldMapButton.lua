@@ -1,7 +1,7 @@
 local AddOnName, AddOn = ...
 -- Handynotes Worldmap Button by fuba
 if not IsAddOnLoaded('HandyNotes') then return end
-
+local WorldMapTooltip = WorldMapTooltip or GameTooltip;
 local isClassicWow = select(4,GetBuildInfo()) < 20000
 
 local L = LibStub("AceLocale-3.0"):GetLocale("HandyNotes_WorldMapButton", false);
