@@ -2,7 +2,9 @@ local AddOnName, AddOn = ...
 -- Handynotes Worldmap Button by fuba
 if not IsAddOnLoaded('HandyNotes') then return end
 local WorldMapTooltip = WorldMapTooltip or GameTooltip;
-local isClassicWow = select(4,GetBuildInfo()) < 20000
+local buildver = select(4,GetBuildInfo())
+local isClassicWow = buildver < 20000
+local isTBCC = (buildver > 20000) and (buildver < 30000)
 
 local L = LibStub("AceLocale-3.0"):GetLocale("HandyNotes_WorldMapButton", false);
 
@@ -89,9 +91,12 @@ WorldMapFrame:HookScript("OnShow", function(self)
 	
 	if isClassicWow then
 		alignmentFrame = _G.WorldMapFrameCloseButton;
-		 parent = alignmentFrame:GetParent();
+		parent = alignmentFrame:GetParent();
+	elseif isTBCC then
+		alignmentFrame = _G.WorldMapFrameCloseButton;
+		parent = alignmentFrame:GetParent();
 	else
-		alignmentFrame = _G.WorldMapFrame.BorderFrame.MaximizeMinimizeFrame;
+		alignmentFrame = _G.WorldMapFrame.BorderFrame.MaximizeMinimizeFrame or _G.WorldMapFrame;
 		parent = alignmentFrame:GetParent();
 	end
 	if (not alignmentFrame) or (not parent) then return end
