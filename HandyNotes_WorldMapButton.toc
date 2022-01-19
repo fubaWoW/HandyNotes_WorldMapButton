@@ -1,6 +1,4 @@
 ## Interface: 90105
-## Interface-BBC: 20503
-## Interface-Classic: 11401
 ## Title: HandyNotes_WorldMapButton
 ## Version: @project-version@
 ## Notes: Adds a Button to the Worldmap to toggle HandyNotes
