@@ -1,4 +1,4 @@
-## Interface: 100000
+## Interface: 30400
 ## Title: HandyNotes_WorldMapButton
 ## Version: @project-version@
 ## Notes: Adds a Button to the Worldmap to toggle HandyNotes
