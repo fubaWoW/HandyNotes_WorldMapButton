@@ -10,6 +10,7 @@
 ## RequiredDeps: HandyNotes
 
 ## X-Curse-Project-ID: 298530
+## X-Wago-ID: q96dVqGO
 
 #@no-lib-strip@
 # Library files
