@@ -3,6 +3,9 @@ ignore:
   - CHANGES.txt
   - LICENSE.md
   - preview.png
+  - .pkgmeta
+  - .github
+  - .gitignore
 
 license-output: LICENSE.txt
 
