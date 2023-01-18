@@ -1,6 +1,6 @@
 ## Interface: 100002
 ## Interface-Classic: 11403
-## Interface-Wrath: 30400
+## Interface-Wrath: 30401
 ## Title: HandyNotes_WorldMapButton
 ## Version: @project-version@
 ## Notes: Adds a Button to the Worldmap that can toggle HandyNotes Icons
