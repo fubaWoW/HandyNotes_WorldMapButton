@@ -69,7 +69,7 @@ local function btnOnClick(self, button)
 			db.enabled = true
 			HandyNotes:Enable();
 		end
-	else
+	elseif button == "RightButton" then
 		LibStub("AceConfigDialog-3.0"):Open("HandyNotes")
 	end
 	SetIconTexture();
