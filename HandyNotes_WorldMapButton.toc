@@ -5,6 +5,7 @@
 ## Version: @project-version@
 ## Notes: Adds a Button to the Worldmap that can toggle HandyNotes Icons
 ## Author: fuba
+## IconTexture: Interface\AddOns\fuba_Settings\fubaLogo
 ## OptionalDeps: Ace3
 ## RequiredDeps: HandyNotes
 
