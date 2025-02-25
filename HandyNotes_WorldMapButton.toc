@@ -24,6 +24,7 @@ Libs\LibStub\LibStub.lua
 # Locale files
 Locale\enUS.lua
 Locale\deDE.lua
+Locale\ruRU.lua
 
 # Core files
 HandyNotes_WorldMapButton.lua
