@@ -1,4 +1,4 @@
-## Interface: 110207, 40402, 11507
+## Interface: 11507, 40402, 110207, 120000
 ## Title: HandyNotes: WorldMapButton
 ## Version: @project-version@
 ## Notes: Adds a Button to the Worldmap that can toggle HandyNotes Icons
@@ -11,6 +11,10 @@
 
 ## X-Curse-Project-ID: 298530
 ## X-Wago-ID: q96dVqGO
+
+## X-Category: |cffff8000fuba
+## Category-enUS: |cffff8000fuba
+## Category-deDE: |cffff8000fuba
 
 #@no-lib-strip@
 # Library files
