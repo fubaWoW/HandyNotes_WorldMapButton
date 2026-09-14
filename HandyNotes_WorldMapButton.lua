@@ -128,7 +128,8 @@ WorldMapFrame:HookScript("OnShow", function(self)
 		y = 0;
 	elseif isTBCC then
 		alignmentFrame = _G.WorldMapFrame.MaximizeMinimizeFrame or _G.WorldMapFrameCloseButton or _G.WorldMapFrame;
-		parent = alignmentFrame:GetParent();
+		--parent = alignmentFrame:GetParent();
+		parent = _G.WorldMapFrame
 		x = 0;
 		y = 0;
 	elseif isWOTLKC then
@@ -170,7 +171,7 @@ WorldMapFrame:HookScript("OnShow", function(self)
 			if LeaMapsDB and (LeaMapsDB["UseDefaultMap"] == "Off") then
 				btn = _G[ButtonName] or CreateFrame("Button", ButtonName, WorldMapFrame, "UIPanelButtonTemplate");
 				btn:ClearAllPoints();
-				btn:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 0, 0);
+				btn:SetPoint("TOP", WorldMapFrameCloseButton, "BOTTOM", 0, 0);
 				btn:SetFrameStrata(WorldMapFrameCloseButton:GetFrameStrata());
 				btn:SetFrameLevel(5000);
 				btn:SetSize(18, 18);
