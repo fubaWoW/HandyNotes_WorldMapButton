@@ -6,17 +6,27 @@ local IsAddOnLoaded = C_AddOns and C_AddOns.IsAddOnLoaded or IsAddOnLoaded
 if not IsAddOnLoaded('HandyNotes') then return end
 
 local WorldMapTooltip = WorldMapTooltip or GameTooltip;
-local buildver = select(4,GetBuildInfo())
-local isClassicWow = buildver < 20000
-local isTBCC = (buildver > 20000) and (buildver < 30000)
-local isWOTLKC = (buildver > 30000) and (buildver < 40000)
-local isCATA = (buildver > 40000) and (buildver < 50000)
-local isMOP = (buildver > 50000) and (buildver < 60000)
-local isWOD = (buildver > 60000) and (buildver < 70000)
-local isLEGION = (buildver > 60000) and (buildver < 70000)
-local isBFA = (buildver > 70000) and (buildver < 80000)
-local isSL = (buildver > 80000) and (buildver < 90000)
-local isRetail = (buildver >= 110000)
+-- local buildver = select(4,GetBuildInfo())
+-- local isClassicWow = buildver < 20000
+-- local isTBCC = (buildver > 20000) and (buildver < 30000)
+-- local isWOTLKC = (buildver > 30000) and (buildver < 40000)
+-- local isCATA = (buildver > 40000) and (buildver < 50000)
+-- local isMOP = (buildver > 50000) and (buildver < 60000)
+-- local isWOD = (buildver > 60000) and (buildver < 70000)
+-- local isLEGION = (buildver > 60000) and (buildver < 70000)
+-- local isBFA = (buildver > 70000) and (buildver < 80000)
+-- local isSL = (buildver > 80000) and (buildver < 90000)
+-- local isRetail = (buildver >= 110000)
+
+local isRetail = WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
+local isClassicEra = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
+local isForever = WOW_PROJECT_ID == WOW_PROJECT_CAMELOT
+
+local isTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+local isWOTLK = WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC
+local isCATA = WOW_PROJECT_ID == WOW_PROJECT_CATACLYSM_CLASSIC
+local isMOP = WOW_PROJECT_ID == WOW_PROJECT_MISTS_CLASSIC
+
 
 local L = LibStub("AceLocale-3.0"):GetLocale("HandyNotes_WorldMapButton", false);
 
@@ -142,6 +152,12 @@ WorldMapFrame:HookScript("OnShow", function(self)
 		parent = alignmentFrame:GetParent();
 		x = 0;
 		y = 0;		
+	elseif isForever then
+		--WorldMapFrame.BorderFrame.MaximizeMinimizeFrame.MaximizeButton
+		alignmentFrame = _G.WorldMapFrame.BorderFrame.MaximizeMinimizeFrame or _G.WorldMapFrame;
+		parent = alignmentFrame:GetParent();
+		x = -2;
+		y = 0;
 	else
 		alignmentFrame = _G.WorldMapFrame.BorderFrame.MaximizeMinimizeFrame or _G.WorldMapFrame;
 		parent = alignmentFrame:GetParent();
